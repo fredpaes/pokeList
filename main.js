@@ -6,24 +6,26 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.Modal.init(elems);
 });
 
-const app = new Vue({
-    el: '#app',
+const listPok = new Vue({
+    el: '#listPok',
     data() {
         return {
             title: 'PokeDex',
             poks: [],
-            detai: []
+            details: [],
+            newDetail: {}
         }
     },
     methods: {
-        getPoks(url) {
-            axios({
-            method: 'get',
-            url: url,
-            responseType: 'stream'
-            })
-            .then(function (response) {
-                console.log(response.data)
+        getPoks(url, name) {
+            this.details = []
+            this.newDetail.pok = name
+            axios.get(url)
+            .then(response => {
+                this.newDetail.pic = response.data.sprites
+                this.details.push(this.newDetail)
+            }) .catch(e => {
+                console.log(e)
             })
         }
     },

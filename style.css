@@ -1,0 +1,12 @@
+.btn {
+    text-transform: initial !important;
+}
+.upp {
+    text-transform: uppercase;
+}
+.modal .modal-content {
+    padding-bottom: 0px !important;
+}
+.row {
+    margin-bottom: 0px !important;
+}

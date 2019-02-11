@@ -6,26 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PokeDex</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div id="app" class="container">
+    <div id="listPok" class="container">
         <h1>{{ title }}</h1>
         <ul class="collection" >
             <li class="collection-item" v-for="poke in poks">
-                <button data-target="modal1" class="btn modal-trigger">Modal</button>
-                <b class="teal-text">{{ poke.name }}</b></a>
-                <p>{{poke}}</p>
+                <button data-target="info" class="btn modal-trigger" v-on:click.prevent="getPoks(poke.url, poke.name)"><i class="material-icons">collections</i></button>
+                <b class="teal-text upp">{{ poke.name }}</b></a>
             </li>
         </ul>
-
-        <div id="modal1" class="modal bottom-sheet">
-            <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
+    
+        <div id="info" class="modal bottom-sheet">
+            <div class="modal-content upp container row" v-for="det in details">
+                <div class="col s12">
+                    <h4>{{det.pok}}</h4>
+                </div>
+                <div class="col s3" v-for="pic in det.pic" v-if="pic">
+                    <img v-bind:src="pic" alt="pok-img" class="circle responsive-img">
+                </div>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                <a class="modal-close btn-flat">Close</a>
             </div>
         </div>
     </div>
