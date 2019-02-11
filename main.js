@@ -10,7 +10,7 @@ const listPok = new Vue({
     el: '#listPok',
     data() {
         return {
-            title: 'PokeDex',
+            title: 'PokeList',
             poks: [],
             details: [],
             newDetail: {}
